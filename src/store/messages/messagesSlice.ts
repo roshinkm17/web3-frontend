@@ -7,6 +7,7 @@ interface MessagesState {
   signer: string;
   originalMessage: string;
   error: string | null;
+  isLoading: boolean;
 }
 
 const initialState: MessagesState = {
@@ -16,6 +17,7 @@ const initialState: MessagesState = {
   signer: '',
   originalMessage: '',
   error: null,
+  isLoading: false,
 };
 
 const messagesSlice = createSlice({
@@ -40,6 +42,9 @@ const messagesSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
     resetMessages: state => {
       state.message = '';
       state.signature = '';
@@ -57,6 +62,7 @@ export const {
   setSigner,
   setError,
   setOriginalMessage,
+  setIsLoading,
   resetMessages,
 } = messagesSlice.actions;
 export default messagesSlice.reducer;
