@@ -43,7 +43,7 @@ const WalletAuth = () => {
   };
 
   return (
-    <div className="w-[320px]">
+    <div className="w-[320px] p-5">
       {otpGenerationStatus === OtpGenerationStatus.IDLE && (
         <EmailForm
           email={email}

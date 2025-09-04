@@ -1,17 +1,27 @@
 import { Loader } from "@/components/ui/loader";
+import { MessageForm } from "@/modules/MessageForm/MessageForm";
+import { VerificationDialog } from "@/modules/MessageForm/VerificationDialog";
 import WalletAuth from "@/modules/WalletAuth/WalletAuth";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 const Home = () => {
-  const { user, loadingNetwork } = useDynamicContext();
+  const { user, loadingNetwork, primaryWallet } = useDynamicContext();
 
-  const shouldShowWalletAuth = !user && !loadingNetwork;
+  if (loadingNetwork) {
+    return <Loader />;
+  }
+
+  if (!user) {
+    return <WalletAuth />;
+  }
+
+  const walletAddress = primaryWallet?.address;
 
   return (
     <main className="p-5">
-      {loadingNetwork && <Loader />}
-      {user && <div>Welcome {user.email}</div>}
-      {shouldShowWalletAuth && <WalletAuth />}
+      Wallet Address: {walletAddress}
+      <MessageForm />
+      <VerificationDialog />
     </main>
   );
 };
