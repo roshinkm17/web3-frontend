@@ -1,9 +1,12 @@
 import "./App.css";
+import { Button } from "./components/ui/button";
 
 function App() {
   return (
-    <main>
-      <h1>Hello World</h1>
+    <main className="p-5">
+      <Button type="button" variant={"outline"}>
+        Hello World
+      </Button>
     </main>
   );
 }
