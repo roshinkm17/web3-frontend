@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface MessagesState {
   message: string;
@@ -10,16 +10,16 @@ interface MessagesState {
 }
 
 const initialState: MessagesState = {
-  message: "",
-  signature: "",
+  message: '',
+  signature: '',
   isValid: false,
-  signer: "",
-  originalMessage: "",
+  signer: '',
+  originalMessage: '',
   error: null,
 };
 
 const messagesSlice = createSlice({
-  name: "messages",
+  name: 'messages',
   initialState,
   reducers: {
     setMessage: (state, action: PayloadAction<string>) => {
@@ -40,12 +40,12 @@ const messagesSlice = createSlice({
     setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
     },
-    resetMessages: (state) => {
-      state.message = "";
-      state.signature = "";
+    resetMessages: state => {
+      state.message = '';
+      state.signature = '';
       state.isValid = false;
-      state.signer = "";
-      state.originalMessage = "";
+      state.signer = '';
+      state.originalMessage = '';
     },
   },
 });

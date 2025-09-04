@@ -1,5 +1,6 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { AuthStatus, OtpGenerationStatus } from "./constants";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+
+import { AuthStatus, OtpGenerationStatus } from './constants';
 
 type AuthStatusType = (typeof AuthStatus)[keyof typeof AuthStatus];
 type OtpGenerationStatusType =
@@ -15,16 +16,16 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  email: "",
+  email: '',
   status: AuthStatus.IDLE,
   error: null,
-  otp: "",
+  otp: '',
   otpVerificationStatus: AuthStatus.IDLE,
   otpGenerationStatus: OtpGenerationStatus.IDLE,
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setEmail: (state, action: PayloadAction<string>) => {

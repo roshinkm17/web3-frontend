@@ -1,4 +1,4 @@
-import type { VerifySignatureResponse } from "./types";
+import type { VerifySignatureResponse } from './types';
 
 export const verifySignatureFromRemote = async (
   signature: string,
@@ -7,10 +7,10 @@ export const verifySignatureFromRemote = async (
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_HOST}/api/verify-signature`,
     {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ signature, message }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }
   );

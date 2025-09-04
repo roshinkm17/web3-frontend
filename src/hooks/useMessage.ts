@@ -1,26 +1,28 @@
-import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
-import { useAppDispatch } from "./useAppDispatch";
-import { useAppSelector } from "./useAppSelector";
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
+
+import { useAppDispatch } from './useAppDispatch';
+import { useAppSelector } from './useAppSelector';
+
 import {
   setError,
   setIsValid,
   setOriginalMessage,
   setSignature,
   setSigner,
-} from "@/store/messages/messagesSlice";
-import { verifySignatureFromRemote } from "@/utils/api";
+} from '@/store/messages/messagesSlice';
+import { verifySignatureFromRemote } from '@/utils/api';
 
 export const useMessage = () => {
   const dispatch = useAppDispatch();
   const { primaryWallet } = useDynamicContext();
-  const { message } = useAppSelector((state) => state.messages);
+  const { message } = useAppSelector(state => state.messages);
 
   const signMessage = async (): Promise<{
     success: boolean;
     signature?: string;
   }> => {
     if (!primaryWallet) {
-      dispatch(setError("No wallet found. Please refresh the page."));
+      dispatch(setError('No wallet found. Please refresh the page.'));
       return { success: false };
     }
 
@@ -28,7 +30,7 @@ export const useMessage = () => {
       const signature = await primaryWallet.signMessage(message);
 
       if (!signature) {
-        dispatch(setError("Failed to sign message. Please try again."));
+        dispatch(setError('Failed to sign message. Please try again.'));
         return { success: false };
       }
 
@@ -36,7 +38,7 @@ export const useMessage = () => {
       dispatch(setError(null));
       return { success: true, signature };
     } catch (error) {
-      dispatch(setError("Failed to sign message. Please try again."));
+      dispatch(setError('Failed to sign message. Please try again.'));
       console.error(error);
       return { success: false };
     }

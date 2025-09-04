@@ -1,10 +1,12 @@
+import { useConnectWithOtp } from '@dynamic-labs/sdk-react-core';
+
+import { useAppDispatch } from './useAppDispatch';
+
 import {
   setOtpGenerationStatus,
   setOtpVerificationStatus,
-} from "@/store/auth/authSlice";
-import { useConnectWithOtp } from "@dynamic-labs/sdk-react-core";
-import { useAppDispatch } from "./useAppDispatch";
-import { AuthStatus, OtpGenerationStatus } from "@/store/auth/constants";
+} from '@/store/auth/authSlice';
+import { AuthStatus, OtpGenerationStatus } from '@/store/auth/constants';
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();

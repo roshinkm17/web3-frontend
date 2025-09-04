@@ -1,5 +1,6 @@
-import { WalletStatus } from "./constants";
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+
+import { WalletStatus } from './constants';
 
 type WalletStatusType = (typeof WalletStatus)[keyof typeof WalletStatus];
 
@@ -16,7 +17,7 @@ const initialState: WalletState = {
 };
 
 const walletSlice = createSlice({
-  name: "wallet",
+  name: 'wallet',
   initialState,
   reducers: {
     setAddress: (state, action: PayloadAction<string>) => {

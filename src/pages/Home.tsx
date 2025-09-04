@@ -1,8 +1,9 @@
-import { Loader } from "@/components/ui/loader";
-import { MessageForm } from "@/modules/MessageForm/MessageForm";
-import { VerificationDialog } from "@/modules/MessageForm/VerificationDialog";
-import WalletAuth from "@/modules/WalletAuth/WalletAuth";
-import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
+
+import { Loader } from '@/components/ui/loader';
+import { MessageForm } from '@/modules/MessageForm/MessageForm';
+import { VerificationDialog } from '@/modules/MessageForm/VerificationDialog';
+import WalletAuth from '@/modules/WalletAuth/WalletAuth';
 
 const Home = () => {
   const { user, loadingNetwork, primaryWallet } = useDynamicContext();
@@ -18,7 +19,7 @@ const Home = () => {
   const walletAddress = primaryWallet?.address;
 
   return (
-    <main className="p-5">
+    <main className='p-5'>
       Wallet Address: {walletAddress}
       <MessageForm />
       <VerificationDialog />

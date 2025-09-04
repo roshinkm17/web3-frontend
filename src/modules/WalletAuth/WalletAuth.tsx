@@ -1,15 +1,16 @@
-import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { useAuth } from "@/hooks/useAuth";
-import { setEmail, setError, setOtp } from "@/store/auth/authSlice";
-import EmailForm from "./EmailForm";
-import { OtpInput } from "./OtpInput";
-import { OTP_LENGTH } from "./constants";
-import { OtpGenerationStatus } from "@/store/auth/constants";
+import { OTP_LENGTH } from './constants';
+import EmailForm from './EmailForm';
+import { OtpInput } from './OtpInput';
+
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAuth } from '@/hooks/useAuth';
+import { setEmail, setError, setOtp } from '@/store/auth/authSlice';
+import { OtpGenerationStatus } from '@/store/auth/constants';
 
 const WalletAuth = () => {
   const { email, otpGenerationStatus, otp, error } = useAppSelector(
-    (state) => state.auth
+    state => state.auth
   );
   const dispatch = useAppDispatch();
 
@@ -22,7 +23,7 @@ const WalletAuth = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
-      dispatch(setError("Email is required"));
+      dispatch(setError('Email is required'));
       return;
     }
 
@@ -43,18 +44,18 @@ const WalletAuth = () => {
   };
 
   return (
-    <div className="w-[320px] p-5">
+    <div className='w-[320px] p-5'>
       {otpGenerationStatus === OtpGenerationStatus.IDLE && (
         <EmailForm
           email={email}
           onChange={handleEmailChange}
           onSubmit={handleSubmit}
-          error={error || undefined}
+          error={error ?? undefined}
         />
       )}
 
       {otpGenerationStatus === OtpGenerationStatus.FAILED && (
-        <span className="text-red-500 text-xs">
+        <span className='text-red-500 text-xs'>
           Failed to generate OTP. Please try again.
         </span>
       )}

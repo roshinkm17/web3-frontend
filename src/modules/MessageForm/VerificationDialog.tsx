@@ -1,18 +1,19 @@
+import { useEffect, useState } from 'react';
+
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { resetMessages } from "@/store/messages/messagesSlice";
-import { useEffect, useState } from "react";
+} from '@/components/ui/dialog';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { resetMessages } from '@/store/messages/messagesSlice';
 
 export const VerificationDialog = () => {
   const { isValid, signer, originalMessage } = useAppSelector(
-    (state) => state.messages
+    state => state.messages
   );
   const dispatch = useAppDispatch();
 

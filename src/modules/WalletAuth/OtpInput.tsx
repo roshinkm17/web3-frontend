@@ -1,10 +1,11 @@
+import { REGEXP_ONLY_DIGITS } from 'input-otp';
+
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
+} from '@/components/ui/input-otp';
 
 interface OtpInputProps {
   otp?: string;
@@ -20,7 +21,7 @@ export const OtpInput = ({ otp, onChange, maxLength = 6 }: OtpInputProps) => {
       maxLength={maxLength}
       value={otp}
       onChange={onChange}
-      inputMode="numeric"
+      inputMode='numeric'
       pattern={REGEXP_ONLY_DIGITS}
     >
       <InputOTPGroup>
