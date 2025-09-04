@@ -13,6 +13,7 @@ export const useAuth = () => {
   const { connectWithEmail, verifyOneTimePassword } = useConnectWithOtp();
 
   const sendOtp = async (email: string) => {
+    dispatch(setOtpGenerationStatus(OtpGenerationStatus.LOADING));
     await connectWithEmail(email);
     dispatch(setOtpGenerationStatus(OtpGenerationStatus.GENERATED));
   };

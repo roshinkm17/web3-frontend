@@ -8,7 +8,7 @@ export const verifySignatureFromRemote = async (
     `${import.meta.env.VITE_BACKEND_HOST}/api/verify-signature`,
     {
       method: 'POST',
-      body: JSON.stringify({ signature: '0x123', message }),
+      body: JSON.stringify({ signature, message }),
       headers: {
         'Content-Type': 'application/json',
       },

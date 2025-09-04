@@ -3,8 +3,15 @@ import type { EmailFormProps } from './types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Loader2Icon } from 'lucide-react';
 
-const EmailForm = ({ email, onChange, onSubmit, error }: EmailFormProps) => {
+const EmailForm = ({
+  email,
+  onChange,
+  onSubmit,
+  error,
+  isLoading,
+}: EmailFormProps) => {
   return (
     <form onSubmit={onSubmit} className='flex flex-col gap-3'>
       <Label>Email</Label>
@@ -15,7 +22,15 @@ const EmailForm = ({ email, onChange, onSubmit, error }: EmailFormProps) => {
         type='email'
       />
       {error && <span className='text-red-500 text-sm'>{error}</span>}
-      <Button type='submit'>Generate OTP</Button>
+      <Button type='submit' disabled={isLoading}>
+        {isLoading ? (
+          <span className='flex items-center gap-2'>
+            <Loader2Icon className='w-4 h-4 animate-spin' /> Generating OTP...
+          </span>
+        ) : (
+          'Generate OTP'
+        )}
+      </Button>
     </form>
   );
 };

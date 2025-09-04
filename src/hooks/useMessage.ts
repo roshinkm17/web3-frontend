@@ -11,6 +11,7 @@ import {
   setSigner,
 } from '@/store/messages/messagesSlice';
 import { verifySignatureFromRemote } from '@/utils/api';
+import { addMessage } from '../store/history/historySlice';
 
 export const useMessage = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ export const useMessage = () => {
 
       dispatch(setSignature(signature));
       dispatch(setError(null));
+
       return { success: true, signature };
     } catch (error) {
       dispatch(setError('Failed to sign message. Please try again.'));
@@ -56,6 +58,17 @@ export const useMessage = () => {
       dispatch(setSigner(res.signer));
       dispatch(setOriginalMessage(res.originalMessage));
       dispatch(setError(null));
+
+      if (!primaryWallet?.address) return;
+
+      dispatch(
+        addMessage({
+          message,
+          createdOn: new Date().toISOString(),
+          userId: primaryWallet.address,
+          walletAddress: primaryWallet.address,
+        })
+      );
     } catch (error) {
       console.error(error);
     }

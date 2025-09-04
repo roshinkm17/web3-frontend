@@ -17,13 +17,13 @@ const WalletInfo = ({ walletAddress }: WalletInfoProps) => {
         <span className='text-md font-semibold'>Connected Wallet</span>
         <Badge
           variant='secondary'
-          className='cursor-pointer ms-1 bg-green-50 text-green-900'
+          className='cursor-pointer ms-1 bg-green-50 text-green-900 text-xs'
           onClick={() => handleCopy(walletAddress)}
         >
           {isCopied ? 'Copied' : 'Copy'} {isCopied ? <Check /> : <Copy />}
         </Badge>
       </div>
-      <span className='text-xs line-clamp-1 overflow-ellipsis'>
+      <span className='text-xs line-clamp-1 overflow-ellipsis font-mono'>
         {walletAddress}
       </span>
     </div>

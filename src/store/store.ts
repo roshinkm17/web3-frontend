@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from '@/store/auth/authSlice';
+import historyReducer from '@/store/history/historySlice';
 import messagesReducer from '@/store/messages/messagesSlice';
 import walletReducer from '@/store/wallet/walletSlice';
 
@@ -9,6 +10,7 @@ export const store = configureStore({
     wallet: walletReducer,
     messages: messagesReducer,
     auth: authReducer,
+    history: historyReducer,
   },
 });
 

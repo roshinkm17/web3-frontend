@@ -9,4 +9,5 @@ export const OtpGenerationStatus = {
   IDLE: 'idle',
   GENERATED: 'generated',
   FAILED: 'failed',
+  LOADING: 'loading',
 } as const;

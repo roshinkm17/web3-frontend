@@ -16,6 +16,10 @@ const WalletAuth = () => {
 
   const { sendOtp, verifyOtp } = useAuth();
 
+  const shouldShowForm =
+    otpGenerationStatus === OtpGenerationStatus.IDLE ||
+    otpGenerationStatus === OtpGenerationStatus.LOADING;
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setEmail(e.target.value));
   };
@@ -28,6 +32,7 @@ const WalletAuth = () => {
     }
 
     sendOtp(email);
+    dispatch(setError(''));
   };
 
   const handleOtpSubmit = (otp: string) => {
@@ -45,12 +50,13 @@ const WalletAuth = () => {
 
   return (
     <div className='w-[320px] p-5'>
-      {otpGenerationStatus === OtpGenerationStatus.IDLE && (
+      {shouldShowForm && (
         <EmailForm
           email={email}
           onChange={handleEmailChange}
           onSubmit={handleSubmit}
           error={error ?? undefined}
+          isLoading={otpGenerationStatus === OtpGenerationStatus.LOADING}
         />
       )}
 
