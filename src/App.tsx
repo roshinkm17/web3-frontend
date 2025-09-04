@@ -1,13 +1,22 @@
+import { Provider } from "react-redux";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import Home from "./pages/Home";
+import store from "./store/store";
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
 function App() {
   return (
-    <main className="p-5">
-      <Button type="button" variant={"outline"}>
-        Hello World
-      </Button>
-    </main>
+    <Provider store={store}>
+      <DynamicContextProvider
+        settings={{
+          environmentId: "0977c207-b009-4264-9c5e-3d7bbe9b9e0b",
+          walletConnectors: [EthereumWalletConnectors],
+        }}
+      >
+        <Home />
+      </DynamicContextProvider>
+    </Provider>
   );
 }
 
