@@ -12,7 +12,7 @@ function App() {
     <Provider store={store}>
       <DynamicContextProvider
         settings={{
-          environmentId: '0977c207-b009-4264-9c5e-3d7bbe9b9e0b',
+          environmentId: import.meta.env.VITE_ENVIRONMENT_ID,
           walletConnectors: [EthereumWalletConnectors],
         }}
       >
