@@ -1,69 +1,170 @@
-# React + TypeScript + Vite
+# Web3 Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based web3 frontend application built with TypeScript, featuring wallet authentication, message signing, and verification capabilities.
 
-Currently, two official plugins are available:
+## 🚀 Quick Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+- **Node.js** (v18 or higher)
+- **npm** package manager
+- **Git**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clone the repository**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+   ```bash
+   git clone <repository-url>
+   cd frontend
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file in the root directory:
+
+   ```env
+   VITE_ENVIRONMENT_ID=your_dynamic_environment_id
+   ```
+
+4. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run type-check` - Run TypeScript type checking
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility libraries
+├── modules/             # Feature-based modules
+├── pages/               # Page components
+├── store/               # Redux store configuration
+├── utils/               # Utility functions
+├── App.tsx              # Main application component
+├── main.tsx             # Application entry point
+├── App.css              # Application styles
+└── index.css            # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Key Directories Explained
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+- **`/components`** - Reusable UI components including shadcn/ui components
+- **`/modules`** - Feature-based modules containing related components and logic
+- **`/store`** - Redux store slices for state management
+- **`/hooks`** - Custom React hooks for shared logic
+- **`/utils`** - Utility functions and API communication
+- **`/pages`** - Top-level page components
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## 🛠️ Tools & Technologies
+
+### Core Framework
+
+- **React 19.1.1** - UI library
+- **TypeScript 5.8.3** - Type safety
+- **Vite 7.1.2** - Build tool and dev server
+
+### State Management
+
+- **Redux Toolkit 2.9.0** - Predictable state container
+- **React Redux 9.2.0** - React bindings for Redux
+
+### Web3 Integration
+
+- **Dynamic Labs SDK** - Wallet connection and authentication
+  - `@dynamic-labs/sdk-react-core`
+  - `@dynamic-labs/ethereum`
+  - `@dynamic-labs/ethers-v6`
+- **Viem 2.37.2** - Ethereum library
+
+### UI & Styling
+
+- **Tailwind CSS 4.1.12** - Utility-first CSS framework
+- **shadcn/ui** - Re-usable component library
+- **Radix UI** - Headless UI components
+  - `@radix-ui/react-dialog`
+  - `@radix-ui/react-icons`
+  - `@radix-ui/react-label`
+  - `@radix-ui/react-slot`
+- **Lucide React** - Icon library
+- **Class Variance Authority** - Component variant management
+
+### Development Tools
+
+- **ESLint 9.33.0** - Code linting
+- **Prettier 3.6.2** - Code formatting
+- **TypeScript ESLint** - TypeScript-specific linting rules
+
+### HTTP Client
+
+- **Axios 1.11.0** - HTTP client for API requests
+
+### Additional Libraries
+
+- **clsx** - Conditional className utility
+- **tailwind-merge** - Tailwind class merging
+- **input-otp** - OTP input component
+
+## 🔧 Configuration Files
+
+- `vite.config.ts` - Vite configuration with React plugin and Tailwind
+- `tsconfig.json` - TypeScript configuration with path aliases
+- `eslint.config.js` - ESLint configuration with React and TypeScript rules
+- `components.json` - shadcn/ui configuration
+- `package.json` - Dependencies and scripts
+
+## 🌐 Environment Variables
+
+Create a `.env` file in the root directory with:
+
+```env
+VITE_ENVIRONMENT_ID=your_dynamic_environment_id
 ```
+
+## 📝 Features
+
+- **Wallet Authentication** - Connect with various Ethereum wallets
+- **Message Signing** - Sign messages with connected wallet
+- **Message Verification** - Verify signed messages
+- **Message History** - View and manage message history
+- **Responsive Design** - Mobile-first responsive UI
+- **Type Safety** - Full TypeScript support
+- **Modern UI** - Clean, accessible interface with shadcn/ui components
+
+## 🚀 Deployment
+
+1. **Build the application**
+
+   ```bash
+   npm run build
+   ```
+
+2. **Preview the build**
+
+   ```bash
+   npm run preview
+   ```
+
+3. **Deploy the `dist` folder** to your preferred hosting service
